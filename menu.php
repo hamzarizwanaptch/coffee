@@ -279,7 +279,9 @@ include("config.php");
 		              <a class="nav-link active" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Drinks</a>
 
 		              <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a>
-		            </div>
+		              <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">dinner</a>
+		  
+					</div>
 		          </div>
 		          <div class="col-md-12 d-flex align-items-center">
 		            
@@ -316,7 +318,7 @@ include("config.php");
 							}
 					}
 						?>
-							<!-- <div class="col-md-4 text-center">
+							<!--  <div class="col-md-4 text-center">
 		              			<div class="menu-wrap">
 		              				<a href="#" class="menu-img img mb-4" style="background-image: url(images/drink-2.jpg);"></a>
 		              				<div class="text">
@@ -372,22 +374,41 @@ include("config.php");
 		              			</div>
 		              		</div>
 		              	</div>
-		              </div>
-
+		              </div> -->
+					
 		              <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
 		                <div class="row">
+							
+						<?php
+							
+							$fetch ="SELECT * FROM `products` ";
+							$variavle =mysqli_query($connection,$fetch);
+
+
+							if(mysqli_num_rows($variavle) >0){
+							while($row=mysqli_fetch_assoc($variavle)){
+
+							
+							
+							?>
+					
 		              		<div class="col-md-4 text-center">
+							
 		              			<div class="menu-wrap">
-		              				<a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-1.jpg);"></a>
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(<?php echo "img/" . $row['image'] ?>);"></a>
 		              				<div class="text">
-		              					<h3><a href="#">Hot Cake Honey</a></h3>
-		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
+		              					<h3><a href="#"><?php echo $row['title'] ?></a></h3>
+		              					<p><?php echo $row['des'] ?></p>
+		              					<p class="price"><span><?php echo $row['price'] ?></span></p>
 		              					<p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
 		              				</div>
 		              			</div>
 		              		</div>
-		              		<div class="col-md-4 text-center">
+							  <?php
+							}
+					}
+						?>
+		              		<!-- <div class="col-md-4 text-center">
 		              			<div class="menu-wrap">
 		              				<a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-2.jpg);"></a>
 		              				<div class="text">
@@ -440,7 +461,7 @@ include("config.php");
 		              					<p class="price"><span>$2.90</span></p>
 		              					<p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p> -->
 		              				</div>
-		              			</div>
+		              			</div> 
 		              		</div>
 		              	</div>
 		              </div>
